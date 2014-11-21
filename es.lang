@@ -78,3 +78,33 @@ show.info=Muestra la información del teléfono, claro
 to.exit=Para salir
 sure=De verdad? No quieres probarla???
 menu.parti=particionado
+¿Quieres reparticionar tu particion data?
+Sí, quiero reparticionar
+Ahora seleccionarás el tamaño. Data y SD interna se borrarán
+No quiero reparticionar
+Seguir con la instalación de la ROM
+Partition
+Elige el tamaño de la particion data
+3GB para aplicaciones y el resto para la memoria interna
+7GB para aplicaciones y el resto para la memoria interna
+10GB para aplicaciones y el resto para la memoria interna
+14GB para aplicaciones y el resto para la memoria interna
+Reparticionar
+Reparticionando
+Por favor, espera mientras se reparticiona. Puede tardar un buen rato...
+Reparticionado con exito
+Reiniciar
+Tipo de Instalación
+Custom, Google, o Slim, tú eliges
+Selecciona el tipo de instalación
+Selecciona las opciones que quieras instalar.
+Con casi todas las aplicaciones de Google.
+Lo mínimo de lo mínimo. Rápido y funcional.
+Menú de Wipes
+Si vienes de otra ROM o quieres hacer instalacion limpia márcala
+Seleccionando wipes
+Borrará los datos de la ROM anterior, pero no los datos personales como fotos o vídeos
+Restaurar IMEIS
+Copia y restauracion automatica de IMES
+Menú de recovery
+Selecciona el recovery
