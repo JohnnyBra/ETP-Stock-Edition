@@ -1,0 +1,855 @@
+ui_print("*********************************************************");
+ui_print("                                                        *");
+ui_print("@                     ELE TEAM PHONE                    *");
+ui_print("                         presenta                       *");
+ui_print("                                                        *");
+ui_print("*********************************************************");
+ui_print("                                                         ");
+ui_print("                         ETP V1.5                        ");
+ui_print("                                                         ");
+ui_print("@                    P8                                  ");
+ui_print("                               Edition                   ");
+ui_print("*********************************************************");
+show_progress(0.000000, 0);
+show_progress(0.100000, 0);
+ui_print("@         10% PREPARANDO          "); 
+ui_print("   Formateando System");
+format("ext4", "EMMC", "/dev/block/mmcblk0p5", "0");
+package_extract_dir("ETP/scripts", "/tmp/scripts");
+set_perm(0, 0, 0755, "/tmp/scripts/copiaseg.sh");
+set_perm(0, 0, 0755, "/tmp/scripts/flashETP.sh");
+if
+	file_getprop("/tmp/aroma/partition.prop","selected.0") == "1"
+then
+ui_print("   Haciendo una copia de la NVRAM en la memoria externa, por si las moscas");
+mount("ext4", "EMMC", "/dev/block/mmcblk0p7", "/data");
+run_program("/tmp/scripts/copiaseg.sh");
+unmount("/data");
+	if
+		file_getprop("/tmp/aroma/repartition.prop","selected.0") == "1"
+	then
+		unmount("/data");
+		unmount("/sdcard");
+		ui_print("   Creando particiones");
+		package_extract_file("ETP/particionado/4/EBR1", "/tmp/EBR1");
+		run_program("/sbin/flash_image", "/dev/block/mmcblk0p1", "/tmp/EBR1");
+		delete("/tmp/EBR1");
+		set_progress(0.5);
+		package_extract_file("ETP/particionado/4/EBR2", "/dev/ebr2");
+		ui_print("@   50% FORMATEANDO...");
+		format("ext4", "EMMC", "/dev/block/mmcblk0p7", "0");
+		set_progress(1);
+		ui_print("Finalizado");
+		ui_print("Reiniciando al recovery");
+		mount("ext4", "EMMC", "/dev/block/mmcblk0p6", "/cache");
+		run_program("/tmp/scripts/flashETP.sh");
+	endif;
+	
+	if
+		file_getprop("/tmp/aroma/repartition.prop","selected.0") == "2"
+	then
+		unmount("/data");
+		unmount("/sdcard");
+		ui_print("   Creando particiones");
+		package_extract_file("ETP/particionado/7/EBR1", "/tmp/EBR1");
+		run_program("/sbin/flash_image", "/dev/block/mmcblk0p1", "/tmp/EBR1");
+		delete("/tmp/EBR1");
+		set_progress(0.5);
+		package_extract_file("ETP/particionado/7/EBR2", "/dev/ebr2");
+		ui_print("@   50% FORMATEANDO...");
+		format("ext4", "EMMC", "/dev/block/mmcblk0p7", "0");
+		set_progress(1);
+		ui_print("Finalizado");
+		ui_print("Reiniciando al recovery");
+		mount("ext4", "EMMC", "/dev/block/mmcblk0p6", "/cache");
+		run_program("/tmp/scripts/flashETP.sh");
+	endif;
+	
+	if
+		file_getprop("/tmp/aroma/repartition.prop","selected.0") == "3"
+	then
+		unmount("/data");
+		unmount("/sdcard");
+		ui_print("   Creando particiones");
+		package_extract_file("ETP/particionado/10/EBR1", "/tmp/EBR1");
+		run_program("/sbin/flash_image", "/dev/block/mmcblk0p1", "/tmp/EBR1");
+		delete("/tmp/EBR1");
+		set_progress(0.5);
+		package_extract_file("ETP/particionado/10/EBR2", "/dev/ebr2");
+		ui_print("@   50% FORMATEANDO...");
+		format("ext4", "EMMC", "/dev/block/mmcblk0p7", "0");
+		set_progress(1);
+		ui_print("Finalizado");
+		ui_print("Reiniciando al recovery");
+		sleep(2);
+		run_program("/sbin/reboot", "recovery");
+	endif;
+	
+	if
+		file_getprop("/tmp/aroma/repartition.prop","selected.0") == "4"
+	then
+		unmount("/data");
+		unmount("/sdcard");
+		ui_print("   Creando particiones");
+		package_extract_file("ETP/particionado/14/EBR1", "/tmp/EBR1");
+		run_program("/sbin/flash_image", "/dev/block/mmcblk0p1", "/tmp/EBR1");
+		delete("/tmp/EBR1");
+		set_progress(0.5);
+		package_extract_file("ETP/particionado/14/EBR2", "/dev/ebr2");
+		ui_print("@   50% FORMATEANDO...");
+		format("ext4", "EMMC", "/dev/block/mmcblk0p7", "0");
+		set_progress(1);
+		ui_print("Finalizado");
+		ui_print("Reiniciando al recovery");
+		mount("ext4", "EMMC", "/dev/block/mmcblk0p6", "/cache");
+		run_program("/tmp/scripts/flashETP.sh");
+	endif;
+endif;	
+if
+	file_getprop("/tmp/aroma/partition.prop","selected.0") == "2"
+then
+## COPIA IMEIS
+if file_getprop("/tmp/aroma/wipes.prop","item.1.2") == "1"
+		then
+		ui_print("   Creando copia de MP0B_001");
+		mount("ext4", "EMMC", "/dev/block/mmcblk0p7", "/data");
+		package_extract_file("ETP/busybox", "/tmp/busybox");
+		set_perm(0, 1000, 0755, "/tmp/busybox");
+		package_extract_file("/data/nvram/md/NVRAM/NVD_IMEI/MP0B_001", "/tmp/dummy");
+		run_program("/tmp/busybox", "mkdir", "/tmp/ETP");
+		run_program("/tmp/busybox", "cp", "-aRf", "/data/nvram/md/NVRAM/NVD_IMEI/MP0B_001", "/tmp/dummy");
+		run_program("/tmp/busybox", "cp", "-aRf", "storage/sdcard1/nvram/md/NVRAM/NVD_IMEI/MP0B_001", "/tmp/dummy2");
+		unmount("/data");
+	endif;
+	
+## WIPES
+	
+		# WipeData 
+		if file_getprop("/tmp/aroma/wipes.prop","item.1.1") == "1"
+		then
+			ui_print("   Formateando Data");
+			format("ext4", "EMMC", "/dev/block/mmcblk0p7", "0");
+    endif;	
+	
+#recovery PhilZ
+if file_getprop("/tmp/aroma/recovery.prop","selected.1") == "1"
+    then
+	ui_print("   Instalando PhilZ recovery");
+      package_extract_file("ETP/recovery/PhilZ/recovery.img", "/dev/recovery");
+    endif;
+if file_getprop("/tmp/aroma/recovery.prop","selected.1") == "2"
+    then
+	ui_print("   Dejando el recovery actual");
+    endif;
+
+	
+ui_print("   Borrando cache y dalvik-cache ...");
+unmount("/cache");
+format("ext4", "EMMC", "/dev/block/mmcblk0p6", "0");
+delete_recursive("/data/dalvik-cache");
+show_progress(0.990000, 0);	
+ui_print("   Montando System y Data");
+mount("ext4", "EMMC", "/dev/block/mmcblk0p5", "/system");
+mount("ext4", "EMMC", "/dev/block/mmcblk0p7", "/data");
+run_program("/tmp/busybox", "cp", "-aRf", "/tmp/dummy", "/data/dummy");
+run_program("/tmp/busybox", "cp", "-aRf", "/tmp/dummy2", "/data/dummy2");
+package_extract_file("lk.bin", "/dev/uboot");
+show_progress(0.200000, 0);
+ui_print("@         20% COPIANDO FICHEROS            ");    	
+package_extract_dir("data", "/data");		
+package_extract_dir("system", "/system");
+
+##############################################################
+#                       Aroma para ETP                       #
+##############################################################
+
+show_progress(0.600000, 0);
+if file_getprop("/tmp/aroma/sabor.prop","selected.1") == "1"
+then
+	package_extract_dir("ETP/base", "/system");
+	package_extract_dir("ETP/default", "/system/media/audio");
+	#ETP OPCIONES PERSONALIZADAS
+	ui_print("@         60% INSTALANDO OPCIONES PERSONALIZADAS      ");    	
+	ui_print("@ Instalando Launchers");	
+	## LAUNCHERS
+	
+		# Launcher3
+		if file_getprop("/tmp/aroma/customize.prop","item.1.1") == "1"
+		then
+			ui_print("   Instalando Launcher3...    ");
+			package_extract_dir("ETP/launchers/launcher3", "/system");
+	endif;
+	
+		# Nova Launcher
+		if file_getprop("/tmp/aroma/customize.prop","item.1.2") == "1"
+		then
+			ui_print("   Instalando Nova Launcher...");
+			package_extract_dir("ETP/launchers/nova", "/system");
+    endif;
+
+		# Z3 Home
+		if file_getprop("/tmp/aroma/customize.prop","item.1.3") == "1"
+		then
+			ui_print("   Instalando Z3 Home...");
+			package_extract_dir("ETP/launchers/z3", "/system");	
+    endif;
+	
+		# GO Launcher Ex
+		if file_getprop("/tmp/aroma/customize.prop","item.1.4") == "1"
+		then
+			ui_print("   Instalando GO Launcher EX...");
+			package_extract_dir("ETP/launchers/go", "/system");	
+    endif;
+	
+	# BlinkFeed
+		if file_getprop("/tmp/aroma/customize.prop","item.1.5") == "1"
+		then
+			ui_print("   Instalando BlinkFeed");
+			package_extract_dir("ETP/launchers/blinkfeed", "/system");	
+    endif;
+	
+		# Apex Launcher
+		if file_getprop("/tmp/aroma/customize.prop","item.1.6") == "1"
+		then
+			ui_print("   Instalando Apex Launcher");
+			package_extract_dir("ETP/launchers/apex", "/system");	
+    endif;
+	
+	show_progress(0.700000, 0);
+	ui_print("@ Instalando Teclados");
+	
+	## TECLADOS
+	
+		# LG G3
+		if file_getprop("/tmp/aroma/customize.prop","item.2.1") == "1"
+		then
+			ui_print("   Instalando Teclado del LG G3...");
+			 package_extract_dir("ETP/teclados/lgg3/system", "/system");
+			 package_extract_dir("ETP/teclados/lgg3/data", "/data");
+	         package_extract_file("ETP/teclados/lgg3/updateprop.sh", "/tmp/updateprop.sh");
+	         package_extract_file("ETP/teclados/lgg3/propvalues", "/tmp/propvalues");
+			 set_perm(0, 0, 0777, "/tmp/updateprop.sh");
+			 run_program("/tmp/updateprop.sh");
+			 set_perm(0, 0, 0644, "/system/build.prop");
+    endif;
+		
+		# Swiftkey
+		if file_getprop("/tmp/aroma/customize.prop","item.2.2") == "1"
+		then
+			ui_print("   Instalando Swifkey...");
+			package_extract_dir("ETP/teclados/swiftkey", "/system");	
+    endif;
+	
+	ui_print("@ Instalando Navegadores");
+
+	## NAVEGADORES
+		
+		# Default
+		if 
+		 file_getprop("/tmp/aroma/customize.prop","item.3.1") == "1"
+		then
+			ui_print("   Instalando Navegador por defecto...");
+			package_extract_dir("ETP/navegadores/defecto", "/system/app");	
+    endif;
+			
+		# UCBrowser
+		if 
+		 file_getprop("/tmp/aroma/customize.prop","item.3.2") == "1"
+		then
+			ui_print("   Instalando UC Browser...");
+			package_extract_dir("ETP/navegadores/ucbrowser", "/system/app");	
+    endif;
+			
+		# Chrome
+		if 
+		 file_getprop("/tmp/aroma/customize.prop","item.3.3") == "1"
+		then
+			ui_print("   Instalando Google Chrome...");
+			package_extract_dir("ETP/navegadores/chrome", "/system/app");	
+    endif;
+	
+	
+    ui_print("@ Instalando Reproductor de vídeo");
+
+	## VIDEOPLAYERS
+		
+		# Default
+		if 
+		 file_getprop("/tmp/aroma/customize.prop","item.4.1") == "1"
+		then
+			ui_print("   Instalando Reproductor por defecto...");
+			package_extract_dir("ETP/video/default", "/system/");	
+    endif;
+			
+		# VLC
+		if 
+		 file_getprop("/tmp/aroma/customize.prop","item.4.2") == "1"
+		then
+			ui_print("   Instalando VLC...");
+			package_extract_dir("ETP/video/vlc", "/data/app");	
+    endif;
+			
+		# BSPlayer
+		if 
+		 file_getprop("/tmp/aroma/customize.prop","item.4.3") == "1"
+		then
+			ui_print("   Instalando BSPlayer...");
+			package_extract_dir("ETP/video/bsplayer", "/data/app");	
+    endif;
+		# MoboPlayer
+		if 
+		 file_getprop("/tmp/aroma/customize.prop","item.4.4") == "1"
+		then
+			ui_print("   Instalando MoboPlayer 2.0...");
+			package_extract_dir("ETP/video/moboplayer", "/data/app");	
+    endif;
+		
+		
+	
+	ui_print("@ Instalando Aplicaciones");
+	show_progress(0.750000, 0);
+	##APPS
+
+		
+		# EsFILEExplorer
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.1") == "1"
+		then
+		  ui_print("  Instalando Es File Explorer");
+		  package_extract_dir("ETP/apps/esfile", "/data/app");
+	endif;
+		
+		# Root Explorer
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.2") == "1"
+		then
+		  ui_print("  Instalando Root Explorer");
+		  package_extract_dir("ETP/apps/rootexplorer", "/system");
+	endif;
+		
+		# MTGPS
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.3") == "1"
+		then
+		  ui_print("  Instalando MTGPS");
+		  package_extract_dir("ETP/apps/mtgps", "/data");
+	endif;
+		
+		# Xposed
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.4") == "1"
+		then
+		  ui_print("  Instalando Xposed y Gravity Box");
+		  package_extract_dir("ETP/apps/xposed", "/system/app");
+	endif;
+		
+		# Lenovo
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.5") == "1"
+		then
+		  ui_print("  Instalando Camara y Galeria de Lenovo");
+		  package_extract_dir("ETP/apps/lenovocam", "/data/app");
+	endif;
+		
+		# Tapatalk
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.6") == "1"
+		then
+		  ui_print("  Instalando Tapatalk");
+		  package_extract_dir("ETP/apps/tapatalk", "/data/app");
+	endif;
+	
+		# Whatsapp
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.7") == "1"
+		then
+		  ui_print("  Instalando Wasssssa");
+		  package_extract_dir("ETP/apps/wassa", "/data/app");
+	endif;
+	
+		# JUNK
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.8") == "1"
+		then
+		  ui_print("  Instalando Prquerias");
+		  package_extract_dir("ETP/apps/fondosanimados", "/system");
+	endif;
+	
+		# Musica
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.9") == "1"
+		then
+		  ui_print("  Instalando reproductor de musica por defecto");
+		  package_extract_dir("ETP/apps/music", "/system");
+	endif;
+		
+		# Archivos
+		if
+		  file_getprop("/tmp/aroma/apps.prop","item.1.10") == "1"
+		then
+		  ui_print("  Instalando gestor de archvios por defecto");
+		  package_extract_dir("ETP/apps/explorador", "/system");
+	endif;
+endif;
+
+#ETP GOOGLE EDITION
+if file_getprop("/tmp/aroma/sabor.prop","selected.1") == "2"
+then
+		ui_print("@         60% CONVIRTIENDO EN GOOGLE EDITION     ");    	
+	ui_print("  Haciendo limpieza previa");
+delete(
+    "/system/app/BrowserProviderProxy.apk",
+    "/system/app/Calendar.apk",
+    "/system/app/Gmail.apk",
+    "/system/app/GmsCore.apk",
+    "/system/app/GoogleCalendar.apk",
+    "/system/app/GoogleCalendarSyncAdapter.apk",
+    "/system/app/GoogleCloudPrint.apk",
+    "/system/app/GoogleHangouts.apk",
+    "/system/app/GoogleKeep.apk",
+    "/system/app/GooglePlus.apk",
+    "/system/app/PartnerBookmarksProvider.apk",
+    "/system/app/QuickSearchBox.apk",
+    "/system/app/Talk.apk",
+    "/system/app/Vending.apk",
+    "/system/app/Youtube.apk",
+    "/system/priv-app/Calendar.apk",
+    "/system/priv-app/GmsCore.apk",
+    "/system/priv-app/GoogleNow.apk",
+    "/system/priv-app/GoogleSearch.apk",
+    "/system/priv-app/OneTimeInitializer.apk",
+    "/system/priv-app/QuickSearchBox.apk",
+    "/system/priv-app/Vending.apk"
+);
+
+# Remove apps from 'app' that need to be installed in 'priv-app'
+delete(
+    "/system/app/CalendarProvider.apk",
+    "/system/app/GoogleBackupTransport.apk",
+    "/system/app/GoogleFeedback.apk",
+    "/system/app/GoogleLoginService.apk",
+    "/system/app/GoogleOneTimeInitializer.apk",
+    "/system/app/GooglePartnerSetup.apk",
+    "/system/app/GoogleServicesFramework.apk",
+    "/system/app/OneTimeInitializer.apk",
+    "/system/app/Phonesky.apk",
+    "/system/app/PrebuiltGmsCore.apk",
+    "/system/app/SetupWizard.apk",
+    "/system/app/talkback.apk",
+    "/system/app/Velvet.apk",
+    "/system/app/Wallet.apk"
+);
+
+# Removing obsolete libs from previous versions of Google+ (PlusOne)
+delete(
+    "/system/lib/libfacetracker.so",
+    "/system/lib/libfrsdk.so",
+    "/system/lib/libplus_jni_v8.so",
+    "/system/lib/librs.antblur.so",
+    "/system/lib/librs.antblur_constant.so",
+    "/system/lib/librs.antblur_drama.so",
+    "/system/lib/librs.drama.so",
+    "/system/lib/librs.film_base.so",
+    "/system/lib/librs.fixedframe.so",
+    "/system/lib/librs.grey.so",
+    "/system/lib/librs.image_wrapper.so",
+    "/system/lib/librs.retrolux.so",
+    "/system/lib/libstlport_shared.so"
+);
+
+
+# Removing obsolete lib from previous versions of Google Search (Velvet)
+delete("/system/lib/libmicro_hotword_jni.so");
+
+# Removing obsolete libs from previous versions of Chrome Browser (Chrome)
+delete(
+    "/system/lib/libchromeview.so",
+    "/system/lib/libchrome.1847.114.so",
+    "/system/lib/libchrome.1916.122.so",
+    "/system/lib/libchrome.1916.138.so",
+    "/system/lib/libchrome.1916.141.so",
+    "/system/lib/libchrome.1985.128.so",
+    "/system/lib/libchrome.1985.131.so",
+    "/system/lib/libchrome.1985.135.so",
+    "/system/lib/libchrome.2062.117.so"
+);
+
+# Removing obsolete libs from previous versions of Google Drive
+delete(
+    "/system/lib/libdocscanner_image-v7a.so",
+    "/system/lib/liblinearalloc.so",
+    "/system/lib/libndk1.so",
+    "/system/lib/librectifier-v7a.so"
+);
+
+# Removing obsolete lib from previous versions of Google Play Services (PrebuiltGmsCore)
+delete("/system/lib/libocrclient.so");
+
+# Removing MediaUploader (since Google removed it beginning with 4.4.1)
+delete("/system/app/MediaUploader.apk");
+
+# Removing Keyboard support lib that was previously added to support CM stock keyboard
+delete("/system/lib/libjni_unbundled_latinimegoogle.so");
+
+# Quitando sonidos y boot
+delete(
+	"/system/media/bootanimation.zip",
+	"/system/media/shtuanimation.zip",
+	"/system/media/audio"
+	);
+	
+	ui_print("@ Instalando aplicaciones de Google");
+	
+	if file_getprop("/tmp/aroma/google.prop","selected.1") == "1"
+    then
+	package_extract_dir("ETP/base", "/system");
+	package_extract_dir("ETP/googlemicro/system", "/system");
+	package_extract_dir("ETP/google/system", "/system");
+	package_extract_dir("ETP/googlemedia", "/system/media");
+	package_extract_dir("ETP/navegadores/chrome", "/system/app");
+	ui_print(" Instalando Xposed");
+	package_extract_dir("ETP/apps/xposed", "/system/app");
+	endif;
+	
+	if file_getprop("/tmp/aroma/google.prop","selected.1") == "2"
+    then
+	package_extract_dir("ETP/base", "/system");
+	package_extract_dir("ETP/googlemicro/system", "/system");
+	package_extract_dir("ETP/googlemedia", "/system/media");
+	package_extract_dir("ETP/navegadores/chrome", "/system/app");
+	endif;
+	
+endif;
+if file_getprop("/tmp/aroma/sabor.prop","selected.1") == "3"
+then
+	ui_print("@         60% CONVIRTIENDO EN SLIM EDITION     "); 
+	ui_print("   Instalando base");
+	package_extract_dir("ETP/base", "/system");
+	package_extract_dir("ETP/googlemedia/audio", "/system/media/audio");
+	package_extract_dir("ETP/launchers/launcher3", "/system");
+	delete("/system/app/SuspendWindow.apk");
+	package_extract_dir("ETP/slim", "/system");
+	ui_print("   Adelgazando ROM");
+	delete(
+		"/system/app/Apollo1.3.apk",
+		"/system/app/Facelook.apk",
+		"/system/app/Flashlight.apk",
+		"/system/app/HTMLViewer.apk",
+		"/system/app/LatinImeGoogle.apk",
+		"/system/app/PermissionControl.apk",
+		"/system/app/SoundRecorder.apk",
+		"/system/app/YouTube.apk",
+		"/system/app/Gmail2.apk",
+		"/system/app/CalendarGoogle.apk",
+		"/system/app/GoogleTTS.apk",
+		"/system/app/ChromeBookmarksSyncAdapter.apk",
+		"/system/priv-app/CDS_INFO.apk",
+		"/system/priv-app/talkback.apk",
+		"/system/priv-app/Velvet.apk",
+		"/system/framework/com.google.android.camera2.jar",
+		"/system/framework/com.google.android.maps.jar",
+		"/system/framework/com.android.nfc_extras.jar"
+		);
+		
+		# Xposed
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.1") == "1"
+		then
+		  ui_print("  Instalando Xposed y Gravity Box");
+		  package_extract_dir("ETP/apps/xposed", "/system/app");
+	endif;
+	
+		# Whatsapp
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.2") == "1"
+		then
+		  ui_print("  Instalando Wasssssa");
+		  package_extract_dir("ETP/apps/wassa", "/data/app");
+	endif;
+	
+		# Musica
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.3") == "1"
+		then
+		  ui_print("  Instalando reproductor de musica por defecto");
+		  package_extract_dir("ETP/apps/music", "/system");
+	endif;
+		
+		# Archivos
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.4") == "1"
+		then
+		  ui_print("  Instalando gestor de archvios por defecto");
+		  package_extract_dir("ETP/apps/explorador", "/system");
+	endif;
+	
+		# Default Videoplayer
+		if 
+		 file_getprop("/tmp/aroma/basicas.prop","item.1.5") == "1"
+		then
+			ui_print("   Instalando Reproductor de video por defecto...");
+			package_extract_dir("ETP/video/default", "/system/");	
+	endif;	
+	
+		# Navegador por defecto 
+		if 
+		 file_getprop("/tmp/aroma/basicas.prop","item.1.6") == "1"
+		then
+			ui_print("   Instalando Navegador por defecto...");
+			package_extract_dir("ETP/navegadores/defecto", "/system/app");
+    endif;
+	
+	# Calculadora
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.7") == "0"
+		then
+		delete("/system/app/Calculator.apk");
+		else
+		  ui_print("  Instlando Calculadora");
+	endif;
+	
+	# Email
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.8") == "0"
+		then
+		delete("/system/app/Email.apk",
+		"/system/app/Exchange2.apk"
+		);
+		else
+		  ui_print("  Instalando Email y servicios exchange");
+	endif;
+	
+	# Backup
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.9") == "0"
+		then
+		delete("/system/priv-app/BackupRestoreConfirmation.apk",
+			"/system/app/DataTransfer.apk"
+			);
+		else
+		  ui_print("  Instalando Herramienta Stock de Copia de Seguridad");
+	endif;
+	
+	# Radio
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.10") == "0"
+		then
+		delete("/system/app/FMRadio.apk");
+		else
+		  ui_print("  Instalando Radio FM");
+	endif;
+	
+	# Vipper
+		if
+		  file_getprop("/tmp/aroma/basicas.prop","item.1.11") == "0"
+		then
+		delete("/system/app/ViPER4Android_FX_A4.x.apk");
+		else
+		  ui_print("  Instalando ViPER4Android");
+	endif;
+	
+ endif;
+endif;
+#INSTALACIÓN COMUN
+show_progress(0.800000, 0);
+ui_print("@         80% INSTALANDO SISTEMA            ");    	
+ui_print("   Creando enlaces simbólicos");
+symlink("toolbox", "/system/bin/setconsole");
+symlink("toolbox", "/system/bin/readlink");
+symlink("toolbox", "/system/bin/ps");
+symlink("toolbox", "/system/bin/mv");
+symlink("toolbox", "/system/bin/du");
+symlink("toolbox", "/system/bin/camera");
+symlink("toolbox", "/system/bin/setsebool");
+symlink("toolbox", "/system/bin/grep");
+symlink("toolbox", "/system/bin/swapoff");
+symlink("toolbox", "/system/bin/runcon");
+symlink("aee_aed", "/system/bin/debuggerd");
+symlink("toolbox", "/system/bin/vmstat");
+symlink("toolbox", "/system/bin/stop");
+symlink("toolbox", "/system/bin/sendevent");
+symlink("toolbox", "/system/bin/df");
+symlink("toolbox", "/system/bin/renice");
+symlink("toolbox", "/system/bin/ln");
+symlink("toolbox", "/system/bin/umount");
+symlink("toolbox", "/system/bin/getprop");
+symlink("toolbox", "/system/bin/notify");
+symlink("toolbox", "/system/bin/uptime");
+symlink("toolbox", "/system/bin/date");
+symlink("toolbox", "/system/bin/start");
+symlink("toolbox", "/system/bin/setprop");
+symlink("toolbox", "/system/bin/lsof");
+symlink("toolbox", "/system/bin/chcon");
+symlink("toolbox", "/system/bin/mount");
+symlink("toolbox", "/system/bin/mkdir");
+symlink("toolbox", "/system/bin/id");
+symlink("toolbox", "/system/bin/chmod");
+symlink("toolbox", "/system/bin/chown");
+symlink("toolbox", "/system/bin/insmod");
+symlink("toolbox", "/system/bin/printenv");
+symlink("toolbox", "/system/bin/nandread");
+symlink("toolbox", "/system/bin/ifconfig");
+symlink("toolbox", "/system/bin/log");
+symlink("toolbox", "/system/bin/setenforce");
+symlink("toolbox", "/system/bin/cmp");
+symlink("toolbox", "/system/bin/ls");
+symlink("toolbox", "/system/bin/ioctl");
+symlink("toolbox", "/system/bin/top");
+symlink("toolbox", "/system/bin/getsebool");
+symlink("toolbox", "/system/bin/mkswap");
+symlink("toolbox", "/system/bin/rm");
+symlink("toolbox", "/system/bin/sleep");
+symlink("toolbox", "/system/bin/lsmod");
+symlink("toolbox", "/system/bin/sync");
+symlink("toolbox", "/system/bin/watchprops");
+symlink("mksh", "/system/bin/sh");
+symlink("toolbox", "/system/bin/dmesg");
+symlink("toolbox", "/system/bin/hd");
+symlink("toolbox", "/system/bin/getenforce");
+symlink("toolbox", "/system/bin/swapon");
+symlink("toolbox", "/system/bin/rmdir");
+symlink("toolbox", "/system/bin/smd");
+symlink("toolbox", "/system/bin/dd");
+symlink("toolbox", "/system/bin/getevent");
+symlink("toolbox", "/system/bin/iftop");
+symlink("toolbox", "/system/bin/newfs_msdos");
+symlink("toolbox", "/system/bin/ionice");
+symlink("toolbox", "/system/bin/netstat");
+symlink("toolbox", "/system/bin/schedtop");
+symlink("toolbox", "/system/bin/clear");
+symlink("toolbox", "/system/bin/md5");
+symlink("toolbox", "/system/bin/restorecon");
+symlink("toolbox", "/system/bin/wipe");
+symlink("toolbox", "/system/bin/touch");
+symlink("toolbox", "/system/bin/route");
+symlink("toolbox", "/system/bin/cp");
+symlink("toolbox", "/system/bin/rmmod");
+symlink("toolbox", "/system/bin/load_policy");
+symlink("toolbox", "/system/bin/kill");
+symlink("toolbox", "/system/bin/cat");
+symlink("busybox", "/system/xbin/[", "/system/xbin/[[",
+        "/system/xbin/adjtimex", "/system/xbin/arp", "/system/xbin/ash",
+        "/system/xbin/awk", "/system/xbin/base64", "/system/xbin/basename",
+        "/system/xbin/bbconfig", "/system/xbin/blkid", "/system/xbin/blockdev",
+        "/system/xbin/brctl", "/system/xbin/bunzip2", "/system/xbin/bzcat",
+        "/system/xbin/bzip2", "/system/xbin/cal", "/system/xbin/cat",
+        "/system/xbin/catv", "/system/xbin/chattr", "/system/xbin/chgrp",
+        "/system/xbin/chmod", "/system/xbin/chown", "/system/xbin/chroot",
+        "/system/xbin/clear", "/system/xbin/cmp", "/system/xbin/comm",
+        "/system/xbin/cp", "/system/xbin/cpio", "/system/xbin/crond",
+        "/system/xbin/crontab", "/system/xbin/cut", "/system/xbin/date",
+        "/system/xbin/dc", "/system/xbin/dd", "/system/xbin/depmod",
+        "/system/xbin/devmem", "/system/xbin/df", "/system/xbin/diff",
+        "/system/xbin/dirname", "/system/xbin/dmesg", "/system/xbin/dnsd",
+        "/system/xbin/dos2unix", "/system/xbin/du", "/system/xbin/echo",
+        "/system/xbin/ed", "/system/xbin/egrep", "/system/xbin/env",
+        "/system/xbin/expand", "/system/xbin/expr", "/system/xbin/false",
+        "/system/xbin/fdisk", "/system/xbin/fgrep", "/system/xbin/find",
+        "/system/xbin/flash_lock", "/system/xbin/flash_unlock",
+        "/system/xbin/flashcp", "/system/xbin/flock", "/system/xbin/fold",
+        "/system/xbin/free", "/system/xbin/freeramdisk", "/system/xbin/fsync",
+        "/system/xbin/ftpget", "/system/xbin/ftpput", "/system/xbin/fuser",
+        "/system/xbin/getopt", "/system/xbin/grep", "/system/xbin/groups",
+        "/system/xbin/gunzip", "/system/xbin/gzip", "/system/xbin/halt",
+        "/system/xbin/head", "/system/xbin/hexdump", "/system/xbin/id",
+        "/system/xbin/ifconfig", "/system/xbin/inetd", "/system/xbin/insmod",
+        "/system/xbin/install", "/system/xbin/iostat", "/system/xbin/ip",
+        "/system/xbin/kill", "/system/xbin/killall", "/system/xbin/killall5",
+        "/system/xbin/length", "/system/xbin/less", "/system/xbin/ln",
+        "/system/xbin/losetup", "/system/xbin/ls", "/system/xbin/lsattr",
+        "/system/xbin/lsmod", "/system/xbin/lsusb", "/system/xbin/lzcat",
+        "/system/xbin/lzma", "/system/xbin/lzop", "/system/xbin/lzopcat",
+        "/system/xbin/man", "/system/xbin/md5sum", "/system/xbin/mesg",
+        "/system/xbin/mkdir", "/system/xbin/mke2fs", "/system/xbin/mkfifo",
+        "/system/xbin/mkfs.ext2", "/system/xbin/mkfs.vfat", "/system/xbin/sh",
+        "/system/xbin/mknod", "/system/xbin/mkswap", "/system/xbin/mktemp",
+        "/system/xbin/modinfo", "/system/xbin/modprobe", "/system/xbin/more",
+        "/system/xbin/mount", "/system/xbin/mountpoint", "/system/xbin/mpstat",
+        "/system/xbin/mv", "/system/xbin/nanddump", "/system/xbin/nandwrite",
+        "/system/xbin/netstat", "/system/xbin/nice", "/system/xbin/nohup",
+        "/system/xbin/nslookup", "/system/xbin/ntpd", "/system/xbin/od",
+        "/system/xbin/patch", "/system/xbin/pgrep", "/system/xbin/pidof",
+        "/system/xbin/ping", "/system/xbin/pkill", "/system/xbin/pmap",
+        "/system/xbin/poweroff", "/system/xbin/printenv", "/system/xbin/printf",
+        "/system/xbin/ps", "/system/xbin/pstree", "/system/xbin/pwd",
+        "/system/xbin/pwdx", "/system/xbin/rdev", "/system/xbin/readlink",
+        "/system/xbin/realpath", "/system/xbin/renice", "/system/xbin/reset",
+        "/system/xbin/resize", "/system/xbin/rev", "/system/xbin/rm",
+        "/system/xbin/rmdir", "/system/xbin/rmmod", "/system/xbin/route",
+        "/system/xbin/run-parts", "/system/xbin/rx", "/system/xbin/sed",
+        "/system/xbin/seq", "/system/xbin/setconsole", "/system/xbin/setserial",
+        "/system/xbin/setsid", "/system/xbin/sha1sum",
+        "/system/xbin/sha256sum", "/system/xbin/sha512sum",
+        "/system/xbin/sleep", "/system/xbin/sort", "/system/xbin/split",
+        "/system/xbin/stat", "/system/xbin/strings", "/system/xbin/stty",
+        "/system/xbin/sum", "/system/xbin/swapoff", "/system/xbin/swapon",
+        "/system/xbin/sync", "/system/xbin/sysctl", "/system/xbin/tac",
+        "/system/xbin/tail", "/system/xbin/tar", "/system/xbin/taskset",
+        "/system/xbin/tee", "/system/xbin/telnet", "/system/xbin/telnetd",
+        "/system/xbin/test", "/system/xbin/tftp", "/system/xbin/tftpd",
+        "/system/xbin/time", "/system/xbin/timeout", "/system/xbin/top",
+        "/system/xbin/touch", "/system/xbin/tr", "/system/xbin/traceroute",
+        "/system/xbin/true", "/system/xbin/ttysize", "/system/xbin/tune2fs",
+        "/system/xbin/umount", "/system/xbin/uname", "/system/xbin/uncompress",
+        "/system/xbin/unexpand", "/system/xbin/uniq", "/system/xbin/unix2dos",
+        "/system/xbin/unlzma", "/system/xbin/unlzop", "/system/xbin/unxz",
+        "/system/xbin/unzip", "/system/xbin/uptime", "/system/xbin/usleep",
+        "/system/xbin/uudecode", "/system/xbin/uuencode", "/system/xbin/vi",
+        "/system/xbin/watch", "/system/xbin/wc", "/system/xbin/wget",
+        "/system/xbin/which", "/system/xbin/whoami", "/system/xbin/xargs",
+        "/system/xbin/xz", "/system/xbin/xzcat", "/system/xbin/yes",
+        "/system/xbin/zcat");
+show_progress(0.850000, 0);
+ui_print("   Añadiendo permisos");
+set_perm_recursive(0, 0, 0755, 0644, "/system");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/bin");
+set_perm(1000, 1000, 0771, "/data/app");
+set_perm(1000, 1000, 0777, "/data/ETP");
+set_perm(0, 3003, 06755, "/system/bin/ip");
+set_perm(0, 3003, 02750, "/system/bin/netcfg");
+set_perm(0, 3004, 02755, "/system/bin/ping");
+set_perm(0, 2000, 06750, "/system/bin/run-as");
+set_perm_recursive(1002, 1002, 10755, 0440, "/system/etc/bluetooth");
+set_perm(0, 0, 0755, "/system/etc/bluetooth");
+set_perm(1000, 1000, 0640, "/system/etc/bluetooth/auto_pair_devlist.conf");
+set_perm(1014, 2000, 0550, "/system/etc/dhcpcd/dhcpcd-run-hooks");
+set_perm_recursive(0, 0, 0755, 0555, "/system/etc/ppp");
+set_perm_recursive(0, 2000, 0755, 0644, "/system/vendor");
+set_perm(0, 2000, 0755, "/system/vendor/lib");
+set_perm(0, 2000, 0755, "/system/vendor/lib/hw");
+set_perm(0, 0, 06755, "/system/xbin/su");
+set_perm(0, 0, 0644, "/system/app/Superuser.apk");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/bin/sysinit");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/etc/init.d");
+set_perm(0, 0, 0755, "/system/etc/init.d");
+set_perm(0, 1000, 0755, "/system/xbin/busybox");
+symlink("/system/xbin/busybox", "/system/bin/busybox");
+run_program("/system/xbin/busybox", "--install", "-s", "/system/xbin");
+set_perm(0, 0, 06755, "/system/xbin/su");
+set_perm(0, 0, 0755, "/system/etc/install-recovery.sh");
+symlink("/system/xbin/su", "/system/bin/su");
+show_progress(0.900000, 0);
+ui_print("   Extrayendo kernel");
+assert(package_extract_file("boot.img", "/tmp/boot.img"),
+       write_raw_image("/tmp/boot.img", "bootimg"),
+       delete("/tmp/boot.img"));
+ui_print("   Flasheando logo              ");
+    assert(package_extract_file("logo.bin", "/tmp/logo.bin"),
+       write_raw_image("/tmp/logo.bin", "logo"),
+       delete("/tmp/logo.bin"));
+show_progress(0.950000, 0);
+ui_print("@         95% LIMPIANDO          ");  
+ui_print("   Borrando cache y dalvik-cache ...");
+unmount("/cache");
+format("ext4", "EMMC", "/dev/block/mmcblk0p6", "0");
+delete_recursive("/data/dalvik-cache");
+show_progress(0.990000, 0);
+package_extract_file("/storage/sdcard1/nvram/md/NVRAM/NVD_IMEI/MP0B_001", "/data/dummy");
+ui_print("   Desmontando");
+unmount("/system");
+unmount("/data");
+show_progress(1.000000, 0);
+ui_print("@        100% TERMINADO         "); 
+
+         
