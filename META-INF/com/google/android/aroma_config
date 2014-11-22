@@ -200,7 +200,7 @@ then
 		  "Z3 Home",      		  	     "Launcher y Widgets del Xperia Z3",     	    0,        #-- item.1.3
 		  "GO Launcher Ex",      		 "Excelente aunque algo instrusivo",     	    0,        #-- item.1.4
 		  "BlinkFeed",    		  		 "El launcher del HTC M8",    			 	    0,        #-- item.1.5
-		  "Apex LAuncher",				 "Launcher gratuito muy parecido a Nova Prime", 0,		  #-- item.1.6
+		  "Apex Launcher",				 "Launcher gratuito muy parecido a Nova Prime", 0,		  #-- item.1.6
 		  		  
   		  "Teclados",	          		 "",	                          			    2,    #-- Group 2. key = "item.2.x"
 		  "LG G3", 				  		 "Teclado del LG G3",  	                        1,	      #-- item.2.1 

@@ -77,6 +77,8 @@ phone.info=Información del teléfono
 show.info=Muestra la información del teléfono, claro
 to.exit=Para salir
 sure=De verdad? No quieres probarla???
+
+#Particionado
 menu.parti=particionado
 sure.parti=¿Quieres reparticionar tu particion data?
 parti.confirm=Sí, quiero reparticionar
@@ -94,24 +96,38 @@ repartitioning=Reparticionando
 wait.parti=Por favor, espera mientras se reparticiona. Puede tardar un buen rato...
 succes.parti=Reparticionado con exito
 reboot=Reiniciar
+
+#Tipo de instalacion
 insta.tipe=Tipo de Instalación
 insta.choose=Custom, Google, o Slim, tú eliges
 choose.tipe=Selecciona el tipo de instalación
 custom.edition=Selecciona las opciones que quieras instalar.
 google.almost=Con casi todas las aplicaciones de Google.
 google.micro=Lo mínimo de lo mínimo. Rápido y funcional.
-Menú de Wipes
-Si vienes de otra ROM o quieres hacer instalacion limpia márcala
-Seleccionando wipes
-Borrará los datos de la ROM anterior, pero no los datos personales como fotos o vídeos
-Restaurar IMEIS
-Copia y restauracion automatica de IMES
-Menú de recovery
-Selecciona el recovery
-El que quizá sea el recovery más completo
-Dejar el existente
-Dejar el recovery que está actualmente instalado
-Menu de Aplicaciones básicas
-Selecciona las aplicaciones
-Launcher nativo MTK para KitKat
-Launcher personalizable muy fluido
+
+#wipes e imei
+wipes.menu=Menú de Wipes
+wipes.desc=Si vienes de otra ROM o quieres hacer instalacion limpia márcala
+choose.wipe=Seleccionando wipes
+warning.wipe=Borrará los datos de la ROM anterior, pero no los datos personales como fotos o vídeos
+imei.restore=Restaurar IMEIS
+imei.desc=Copia y restauracion automatica de IMES
+
+#recovery
+recov.menu=Menú de recovery
+recov.choose=Selecciona el recovery
+philz.desc=El que quizá sea el recovery más completo
+same.rec=Dejar el existente
+same.rec.desc=Dejar el recovery que está actualmente instalado
+
+#menus aplicaciones
+app.menu=Menu de Aplicaciones básicas
+desc.app.menu=Selecciona las aplicaciones
+launcher3=Launcher nativo MTK para KitKat
+nova.desc=Launcher personalizable muy fluido
+z3.desc=Launcher y Widgets del Xperia Z3
+goex.desc=Excelente aunque algo instrusivo
+blink.desc=El launcher del HTC M8
+apex.desc=Launcher gratuito muy parecido a Nova Prime
+
+
