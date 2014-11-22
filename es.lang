@@ -78,28 +78,28 @@ show.info=Muestra la información del teléfono, claro
 to.exit=Para salir
 sure=De verdad? No quieres probarla???
 menu.parti=particionado
-¿Quieres reparticionar tu particion data?
-Sí, quiero reparticionar
-Ahora seleccionarás el tamaño. Data y SD interna se borrarán
-No quiero reparticionar
-Seguir con la instalación de la ROM
-Partition
-Elige el tamaño de la particion data
-3GB para aplicaciones y el resto para la memoria interna
-7GB para aplicaciones y el resto para la memoria interna
-10GB para aplicaciones y el resto para la memoria interna
-14GB para aplicaciones y el resto para la memoria interna
-Reparticionar
-Reparticionando
-Por favor, espera mientras se reparticiona. Puede tardar un buen rato...
-Reparticionado con exito
-Reiniciar
-Tipo de Instalación
-Custom, Google, o Slim, tú eliges
-Selecciona el tipo de instalación
-Selecciona las opciones que quieras instalar.
-Con casi todas las aplicaciones de Google.
-Lo mínimo de lo mínimo. Rápido y funcional.
+sure.parti=¿Quieres reparticionar tu particion data?
+parti.confirm=Sí, quiero reparticionar
+choose.size.warn=Ahora seleccionarás el tamaño. Data y SD interna se borrarán
+No.parti=No quiero reparticionar
+rom.insta=Seguir con la instalación de la ROM
+parti=Partición
+choose.size=Elige el tamaño de la particion data
+3gbsize=3GB para aplicaciones y el resto para la memoria interna
+7gbsize=7GB para aplicaciones y el resto para la memoria interna
+10gbsize=10GB para aplicaciones y el resto para la memoria interna
+14gb.size=14GB para aplicaciones y el resto para la memoria interna
+reparti=Reparticionar
+repartitioning=Reparticionando
+wait.parti=Por favor, espera mientras se reparticiona. Puede tardar un buen rato...
+succes.parti=Reparticionado con exito
+reboot=Reiniciar
+insta.tipe=Tipo de Instalación
+insta.choose=Custom, Google, o Slim, tú eliges
+choose.tipe=Selecciona el tipo de instalación
+custom.edition=Selecciona las opciones que quieras instalar.
+google.almost=Con casi todas las aplicaciones de Google.
+google.micro=Lo mínimo de lo mínimo. Rápido y funcional.
 Menú de Wipes
 Si vienes de otra ROM o quieres hacer instalacion limpia márcala
 Seleccionando wipes
@@ -108,3 +108,10 @@ Restaurar IMEIS
 Copia y restauracion automatica de IMES
 Menú de recovery
 Selecciona el recovery
+El que quizá sea el recovery más completo
+Dejar el existente
+Dejar el recovery que está actualmente instalado
+Menu de Aplicaciones básicas
+Selecciona las aplicaciones
+Launcher nativo MTK para KitKat
+Launcher personalizable muy fluido
