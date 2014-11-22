@@ -1,0 +1,117 @@
+### LICENSE:
+#
+# Copyright (C) 2011 Ahmad Amarullah ( http://amarullz.com/ )
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+### LANGUAGE STRING RESOURCE FILE
+#
+#   Language  : Espanol
+#   By        : amarullz + google translate
+#
+
+#
+#--- COMMON SYSTEM STRING RESOURCE
+#
+text_ok=Aceptar
+text_next=Siguiente
+text_back=Atrás
+text_yes=Sí
+text_no=No
+text_about=Acerca de
+text_calibrating=Calibrar pantalla
+text_quit=Salir de la instalación
+text_quit_msg=¿Seguro que quieres salir?
+
+#
+#-- CUSTOM STRING RESOURCE
+#
+common.for=para
+
+langtest.title=Prueba de Lenguaje
+langtest.multiline=Este texto está en langs/es.lang\
+Usa la barra invertida al final del texto para marcar el salto de línea\
+\
+También puedes aplicar <b>Formato</b> al texto.\
+\
+Gracias por usar AROMA Installer
+
+#-- End of string without any backslash for multiline text
+
+
+themes.title=Selecciona un Tema
+themes.desc=Por favor, selecciona el tema gráfico que quieres usar en esta prueba de instalación:
+
+welcome.title=Bienvenido
+welcome.text1=Estás a punto de instalar
+welcome.text2=AROMA Installer fue el primer y el único instalador del mundo táctil y personalizable para ROMs Android.
+welcome.version=VERSIÓN
+welcome.codename=CODENAME
+welcome.updated=ACTUALIZADO
+welcome.next=Pulsa Siguiente para continuar la instalación...
+
+terms.title=Términos y Condiciones
+terms.desc=Por favor, lea cuidadosamente los términos y condiciones de AROMA Installer.
+terms.check=Estoy de acuerdo con estos Términos y Condiciones...
+terms.confirm=Por favor, revise el acuerdo...
+
+changelog.title=Historial de cambios
+changelog.desc=Historial de cambios de AROMA Installer
+
+#ETP
+to.phone=para el teléfono
+next.continue=Presiona siguiente para continuar
+begin=Empezar la instalación
+install.etp=Instalar ETP v1.5 Stock Edition
+phone.info=Información del teléfono
+show.info=Muestra la información del teléfono, claro
+to.exit=Para salir
+sure=De verdad? No quieres probarla???
+menu.parti=particionado
+sure.parti=¿Quieres reparticionar tu particion data?
+parti.confirm=Sí, quiero reparticionar
+choose.size.warn=Ahora seleccionarás el tamaño. Data y SD interna se borrarán
+No.parti=No quiero reparticionar
+rom.insta=Seguir con la instalación de la ROM
+parti=Partición
+choose.size=Elige el tamaño de la particion data
+3gbsize=3GB para aplicaciones y el resto para la memoria interna
+7gbsize=7GB para aplicaciones y el resto para la memoria interna
+10gbsize=10GB para aplicaciones y el resto para la memoria interna
+14gb.size=14GB para aplicaciones y el resto para la memoria interna
+reparti=Reparticionar
+repartitioning=Reparticionando
+wait.parti=Por favor, espera mientras se reparticiona. Puede tardar un buen rato...
+succes.parti=Reparticionado con exito
+reboot=Reiniciar
+insta.tipe=Tipo de Instalación
+insta.choose=Custom, Google, o Slim, tú eliges
+choose.tipe=Selecciona el tipo de instalación
+custom.edition=Selecciona las opciones que quieras instalar.
+google.almost=Con casi todas las aplicaciones de Google.
+google.micro=Lo mínimo de lo mínimo. Rápido y funcional.
+Menú de Wipes
+Si vienes de otra ROM o quieres hacer instalacion limpia márcala
+Seleccionando wipes
+Borrará los datos de la ROM anterior, pero no los datos personales como fotos o vídeos
+Restaurar IMEIS
+Copia y restauracion automatica de IMES
+Menú de recovery
+Selecciona el recovery
+El que quizá sea el recovery más completo
+Dejar el existente
+Dejar el recovery que está actualmente instalado
+Menu de Aplicaciones básicas
+Selecciona las aplicaciones
+Launcher nativo MTK para KitKat
+Launcher personalizable muy fluido
