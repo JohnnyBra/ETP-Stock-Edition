@@ -130,4 +130,35 @@ goex.desc=Excelente aunque algo instrusivo
 blink.desc=El launcher del HTC M8
 apex.desc=Launcher gratuito muy parecido a Nova Prime
 
+teclados=Teclados
+g3.desc=Teclado del LG G3
+swift.desc=Famoso teclado predictivo
+browsers=Navegadores de Internet
+def.browser.desc=El navegador por defecto de KitKat
+uc.desc=Ligero y muy fluido
+chrome.desc=El navegador de Google
+video=Reproductor de vídeo
+def.video=Videos
+def.video.desc=Reproductor de videos por defecto
+vlc.desc=Ligero y completo. En estado BETA
+bs.desc=Uno de los más famosos
+mobo.desc=Muy completo
+
+
+#Menus aplicaciones adicionales
+opt.app.menu=Menú de aplicaciones opcionales
+desc.opt.app.menu=Selecciona el resto de las aplicaciones a instalar
+apps=Aplicaciones
+esfile.desc=Explorador de archivos muy conocido
+root.desc=El navegador de archivos con permisos root por excelencia
+mtgps.desc=Programa para descargar el archivo EPO y mejorar el gps
+lenovo.desc=SuperCamara y Galería de Lenovo
+tapatalk.desc=El mejor visor de foros
+stuff.name=Fondos animados
+stuff.desc=Fondos animados y demás porquería NO RECOMENDADO
+music.def=Reproductor de musica por defecto
+music.def.desc=Para los que usan los controles del s-view
+file.def=Gestor de archivos por defecto
+
+
 
