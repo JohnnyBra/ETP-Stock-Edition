@@ -1,4 +1,41 @@
-loadlang("langs/es.lang");
+﻿###################################################################################################################
+#
+# SHOW LANGUAGE SELECTION
+#
+selectbox(
+  #-- Title
+    "Select Language",
+  
+  #-- Sub Title
+    "Please select installer language that you want to use in this ETP installation:",
+  
+  #-- Icon: <AROMA Resource Dir>/icons/personalize.png or <ThemeDir>/icon.personalize.png
+    "@default",
+  
+  #-- Will be saved in /tmp/aroma/theme.prop
+    "lang.prop",
+  
+  #---------------------------------[ Selectbox Without Group ]----------------------------------#
+  # TITLE            |  SUBTITLE                                                 | Initial Value #
+  #------------------+-----------------------------------------------------------+---------------#
+
+    "English",            "Welcome to Installer",                                        1,      #-- selected.0 = 1
+    "Espanol",            "Bienvenido al Instalador",                                    0      #-- selected.0 = 2
+    
+  #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
+);
+
+##
+# SET LANGUAGE & FONT FAMILY
+#
+if prop("lang.prop","selected.0")=="1" then
+  loadlang("langs/en.lang");
+endif;
+
+if prop("lang.prop","selected.0")=="2" then
+  loadlang("langs/es.lang");
+endif;
+
 fontresload("0", "ttf/Roboto-Regular.ttf", "12");
 fontresload("1", "ttf/Roboto-Regular.ttf", "18");
 theme("franzyroy");
@@ -335,23 +372,23 @@ endif;
 setvar("retstatus",
   install(
 	#-- Title
-      "Progreso de la instalacion",
+      "<~insta.progress>",
 	
 	#-- Installation Process message
-	  "<b>"+ini_get("rom_name")+"</b> se está instalando.\n\n"+    
-      "La instalación de <b>"+ini_get("rom_name")+
-	  "</b> va palante. Esperemos que funcione :/",
+	  "<b>"+ini_get("rom_name")+"</b> <~is.installing>\n\n"+    
+      "<~insta.of> <b>"+ini_get("rom_name")+
+	  "</b> <~go.ahead> :/",
 	
 	#-- Installation Icon
       "@iconoelefante",
 	
 	#-- Installation Finish Message
-      "Parece que al final salio bien  la instalación de <b>"+ini_get("rom_name")+
-	  "</b>. Dale a finalizar, anda."
+      "<~all.good> <b>"+ini_get("rom_name")+
+	  "</b>. <~press.finish>"
   )
 );
 
-ini_set("text_next", "Ya está!");
+ini_set("text_next", "<~its.ok>");
 
 checkviewbox(
   #-- Title
@@ -359,13 +396,13 @@ checkviewbox(
   
   #-- Text
     "<#selectbg_g><b>Congratuleichons...</b></#>\n\n"+
-    "<b>"+ini_get("rom_name")+"</b> se ha instalado correctamente en tu Elephone",
+    "<b>"+ini_get("rom_name")+"</b> <~ok.elephone>",
         	
   #-- Icon
     "icons/iconoelefante",
 
   #-- Checkbox Text
-    "Reinicia el telefono.",
+    "<~reboot.phone>",
 
   #-- Initial Checkbox value ( 0=unchecked, 1=checked ) -  (Optional, default:0)
     "1", #-1,
