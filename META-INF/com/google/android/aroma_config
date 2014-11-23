@@ -1,3 +1,9 @@
+##ETP CUSTOM INSTALLATION
+
+fontresload("0", "ttf/Roboto-Regular.ttf", "12");
+fontresload("1", "ttf/Roboto-Regular.ttf", "18");
+theme("franzyroy");
+
 ﻿###################################################################################################################
 #
 # SHOW LANGUAGE SELECTION
@@ -35,10 +41,6 @@ endif;
 if prop("lang.prop","selected.0")=="2" then
   loadlang("langs/es.lang");
 endif;
-
-fontresload("0", "ttf/Roboto-Regular.ttf", "12");
-fontresload("1", "ttf/Roboto-Regular.ttf", "18");
-theme("franzyroy");
 
 ini_set("rom_name",             "ETP v1.5 Stock Edition");
 ini_set("rom_version",          "4.4.2");
