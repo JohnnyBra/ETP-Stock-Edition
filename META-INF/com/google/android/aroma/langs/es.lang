@@ -32,6 +32,7 @@ text_about=Acerca de
 text_calibrating=Calibrar pantalla
 text_quit=Salir de la instalación
 text_quit_msg=¿Seguro que quieres salir?
+text_finish=Finalizar
 
 #
 #-- CUSTOM STRING RESOURCE
@@ -79,7 +80,7 @@ to.exit=Para salir
 sure=De verdad? No quieres probarla???
 
 #Particionado
-menu.parti=particionado
+menu.parti=Particionado
 sure.parti=¿Quieres reparticionar tu particion data?
 parti.confirm=Sí, quiero reparticionar
 choose.size.warn=Ahora seleccionarás el tamaño. Data y SD interna se borrarán
@@ -101,9 +102,9 @@ reboot=Reiniciar
 insta.tipe=Tipo de Instalación
 insta.choose=Custom, Google, o Slim, tú eliges
 choose.tipe=Selecciona el tipo de instalación
-custom.edition=Selecciona las opciones que quieras instalar.
-google.almost=Con casi todas las aplicaciones de Google.
-google.micro=Lo mínimo de lo mínimo. Rápido y funcional.
+custom.edition.desc=Selecciona las opciones que quieras instalar.
+google.edition.desc=Con casi todas las aplicaciones de Google.
+slim.edition.desc=Lo mínimo de lo mínimo. Rápido y funcional.
 
 #wipes e imei
 wipes.menu=Menú de Wipes
@@ -121,9 +122,9 @@ same.rec=Dejar el existente
 same.rec.desc=Dejar el recovery que está actualmente instalado
 
 #menus aplicaciones
-app.menu=Menu de Aplicaciones básicas
+basic.app.menu=Menu de Aplicaciones básicas
 desc.app.menu=Selecciona las aplicaciones
-launcher3=Launcher nativo MTK para KitKat
+launcher3.desc=Launcher nativo MTK para KitKat
 nova.desc=Launcher personalizable muy fluido
 z3.desc=Launcher y Widgets del Xperia Z3
 goex.desc=Excelente aunque algo instrusivo
@@ -159,6 +160,35 @@ stuff.desc=Fondos animados y demás porquería NO RECOMENDADO
 music.def=Reproductor de musica por defecto
 music.def.desc=Para los que usan los controles del s-view
 file.def=Gestor de archivos por defecto
+
+#Google edition
+choose.google=Has elegido ETP como dice Google
+choose.app.google=Elige la cantidad de chascas de google
+max.mini=Maxi o mini, tú eliges
+google.full.desc=Casi todas las aplicaciones de Google y el Xposed
+google.micro.desc=Una cantidad mínima de aplicaciones de google
+google.app.list=Listado de aplicaciones
+google.quest=Estas de acuerdo?
+license=Necesitas estar de acuerdo!!
+
+#Slim Edition
+vipper.desc=Aumento de la calidad de sonido y control total
+default.browser=Navegador de internet por defecto
+calculator=Calculator
+calculator.desc=Simplemente la calculadora
+email.desc=Email stock y servicios exchange
+backup.desc=Herramienta Stock de backup y restauración
+
+#Installation
+insta.progress=Progreso de la instalación
+is.installing=se está instalando
+insta.of=La instalación de
+go.ahead=va palante. Esperemos que funcione
+all.good=Parece que al final salio bien  la instalación de
+press.finish=Dale a finalizar, anda.
+its.ok=Ya está!
+ok.elephone=se ha instalado correctamente en tu Elephone
+reboot.phone=Reinicia el telefono.
 
 
 

@@ -112,50 +112,50 @@ if prop("menu.prop","selected")=="3" then
  endif;
  
  selectbox(
-	"Particionado",
-	"¿Quieres reparticionar tu particion data?",
+	"<~menu.parti>",
+	"<~sure.parti>",
 	"@iconoelefante",
 	"partition.prop",
 
-	"Sí, quiero reparticionar", "Ahora seleccionarás el tamaño. Data y SD interna se borrarán", 0,
-	"No quiero reparticionar", "Seguir con la instalación de la ROM", 1
+	"<~parti.confirm>", "<~choose.size.warn>", 0,
+	"<~no.parti>", "<~rom.insta>", 1
 );
 
 	if prop("partition.prop","selected.0")=="1" then
 	selectbox(
-		"Partition",
-		"Elige el tamaño de la particion data",
+		"<~parti>",
+		"<~choose.size>",
 		"@iconoelefante",
 		"repartition.prop",
 
-		"3 Gb",  "3GB para aplicaciones y el resto para la memoria interna)", 1,
-		"7 Gb",  "7GB para aplicaciones y el resto para la memoria interna)", 0,
-		"10 Gb",  "10GB para aplicaciones y el resto para la memoria interna)", 0,
-		"14 Gb",  "14GB para aplicaciones y el resto para la memoria interna)", 0
+		"3 Gb",  "<~3gbsize>", 1,
+		"7 Gb",  "<~7gbsize>", 0,
+		"10 Gb",  "<~10gbsize>", 0,
+		"14 Gb",  "<~14gbsize>", 0
 	);
 
-	ini_set("text_next", "Reparticionar");
+	ini_set("text_next", "<~reparti>");
 
 	install(
-		"Reparticionando",
-		"Por favor, espera mientras se reparticiona. Puede tardar un buen rato...",
+		"<~repartitioning>",
+		"<~wait.parti>",
 		"@install",
-		"Reparticionado con exito"
+		"<~succes.parti>"
 	);
 
-	ini_set("text_next", "Reiniciar");	
+	ini_set("text_next", "<~reboot>");	
 	endif;
 
 if prop("partition.prop","selected.0")=="2" then
 selectbox(
-    "Tipo de Instalación",
-    "Custom, Google, o Slim, tú eliges",
+    "<~insta.tipe>",
+    "<~insta.choose>",
 	"@install",
     "sabor.prop",
-	"Selecciona el tipo de instalación", "", 2, #-- Group 1. key = "selected.1"
-	"ETP Personalizada", "Selecciona las opciones que quieras instalar.", 1,  #-- selected.1 = 1
-	"ETP Google Edition", "Con casi todas las aplicaciones de Google.", 0,  #-- selected.1 = 2
-	"ETP SuperSlim Edition", "Lo mínimo de lo mínimo. Rápido y funcional.", 0 #-- selected.1 = 3
+	"<~choose.tipe>", "", 2, #-- Group 1. key = "selected.1"
+	"ETP Custom Edition", "<~custom.edition.desc>", 1,  #-- selected.1 = 1
+	"ETP Google Edition", "<~google.edition.desc>", 0,  #-- selected.1 = 2
+	"ETP Slim Edition", "<~slim.edition.desc>", 0 #-- selected.1 = 3
    	);
 
 ####################################################################################################
@@ -164,82 +164,82 @@ selectbox(
 #                                                                                                  #
 ####################################################################################################	
 	checkbox(
-	      "Menú de Wipes",
-	      "Si vienes de otra ROM o quieres hacer instalacion limpia márcala",
+	      "<~wipes.menu>",
+	      "<~wipes.desc>",
 	      "@alert",
 	      "wipes.prop",
 
-  		  "Seleccionando wipes",        "",                      			 									   2,     #-- Group 1. key = "item.1.x"
-		  "Wipe Data",				    "Borrará los datos de la ROM anterior, pero no los datos personales como fotos o vídeos",	   0,      #-- item.1.1
-		  "Restaurar IMEIS",			"Copia y restauracion automatica de IMES",													   0		#-- item.1.2
+  		  "<~choose.wipe>",        "",                      			 									   2,     #-- Group 1. key = "item.1.x"
+		  "Wipe Data",				    "<~warning.wipe>",	   0,      #-- item.1.1
+		  "<~imei.restore>",			"<~imei.desc>",													   0		#-- item.1.2
 		);
 	
 	selectbox(
-	      "Menú de recovery",
-	      "Selecciona el recovery",
+	      "<~recov.menu>",
+	      "<~recov.choose>",
 	      "@cwm",
 	      "recovery.prop",
 
-		  "Elige recovery",	                 "",	                               		    2,  #-- Group 1. key = "selected.1"
-		  "PhilZ Advanced touch recovery", 				    "El que quizá sea el recovery más completo",            	    1,	    #-- selected.1 = 1
-		  "Dejar el existente",       						"Dejar el recovery que está actualmente instalado",     	    0       #-- selected.1 = 2
+		  "<~recov.choose>",	                 "",	                               		    2,  #-- Group 1. key = "selected.1"
+		  "PhilZ Advanced touch recovery", 				    "<~philz.desc>",            	    1,	    #-- selected.1 = 1
+		  "<~same.rec>",       						"<~same.rec.desc>",     	    0       #-- selected.1 = 2
 		);
 		
 #ETP CUSTOM		
 if file_getprop("/tmp/aroma/sabor.prop","selected.1") == "1"
 then		  
 	checkbox(
-	      "Menu de Aplicaciones básicas",
-	      "Selecciona las aplicaciones",
+	      "<~basic.app.menu>",
+	      "<~desc.app.menu>",
 	      "@customize",
 	      "customize.prop",
 
 		  "Launchers",	                 "",	                               		    2,    #-- Group 1. key = "item.1.x"
-		  "Launcher 3", 				 "Launcher nativo MTK para KitKat",             1,	      #-- item.1.1
-		  "Nova Launcher",               "Launcher personalizable muy fluido",     	    0,        #-- item.1.2
-		  "Z3 Home",      		  	     "Launcher y Widgets del Xperia Z3",     	    0,        #-- item.1.3
-		  "GO Launcher Ex",      		 "Excelente aunque algo instrusivo",     	    0,        #-- item.1.4
-		  "BlinkFeed",    		  		 "El launcher del HTC M8",    			 	    0,        #-- item.1.5
-		  "Apex Launcher",				 "Launcher gratuito muy parecido a Nova Prime", 0,		  #-- item.1.6
+		  "Launcher 3", 				 "<~launcher3.desc>",             1,	      #-- item.1.1
+		  "Nova Launcher",               "<~nova.desc>",     	    0,        #-- item.1.2
+		  "Z3 Home",      		  	     "<~z3.desc>",     	    0,        #-- item.1.3
+		  "GO Launcher Ex",      		 "<~goex.desc>",     	    0,        #-- item.1.4
+		  "BlinkFeed",    		  		 "<~blink.desc>",    			 	    0,        #-- item.1.5
+		  "Apex Launcher",				 "<~apex.desc>", 0,		  #-- item.1.6
 		  		  
-  		  "Teclados",	          		 "",	                          			    2,    #-- Group 2. key = "item.2.x"
-		  "LG G3", 				  		 "Teclado del LG G3",  	                        1,	      #-- item.2.1 
-		  "Swiftkey",      			     "Famoso teclado predictivo",        			0,        #-- item.2.2
+  		  "<~teclados>",	          		 "",	                          			    2,    #-- Group 2. key = "item.2.x"
+		  "LG G3", 				  		 "<~g3.desc>",  	                        1,	      #-- item.2.1 
+		  "Swiftkey",      			     "<~swift.desc>",        			0,        #-- item.2.2
 		  
-		  "Navegadores de Internet",			"",									    2, 	  #--Group 3. key = "item.3.x"
-		  "Browser",					 "El navegador por defecto de KitKat",    	 	0,   	  #-- item.3.1  
-          "UC Browser",				   	 "Ligero y muy fluido",      			 	    1,   	  #-- item.3.2	
-		  "Chrome",			   			 "El navegador de Google",        			    0,   	  #-- item.3.3	
+		  "<~browsers>",			"",									    2, 	  #--Group 3. key = "item.3.x"
+		  "Browser",					 "<~def.browser.desc>",    	 	0,   	  #-- item.3.1  
+          "UC Browser",				   	 "<~uc.desc>",      			 	    1,   	  #-- item.3.2	
+		  "Chrome",			   			 "<~chrome.desc>",        			    0,   	  #-- item.3.3	
 
-		  "Reproductor de video",			"",									        2, 	  #--Group 4. key = "item.4.x"
-		  "Videos",					 	 "Reproductor de videos por defecto",    	 	1,   	  #-- item.4.1  
-          "VLC",				   		 "Ligero y completo. En estado BETA",      	    0,   	  #-- item.4.2	
-		  "BSPlayer",			   		 "Uno de los más famosos",        			    0,   	  #-- item.4.3	
-		  "MoboPlayer 2.0",			   	 "Muy completo",        			   		 	0   	  #-- item.4.4	
+		  "<~video>",			"",									        2, 	  #--Group 4. key = "item.4.x"
+		  "<~def.video>",				 "<~def.video.desc>",    	 	1,   	  #-- item.4.1  
+          "VLC",				   		 "<~vlc.desc>",      	    0,   	  #-- item.4.2	
+		  "BSPlayer",			   		 "<~bs.desc>",        			    0,   	  #-- item.4.3	
+		  "MoboPlayer 2.0",			   	 "<~mobo.desc>",        			   		 	0   	  #-- item.4.4	
 		  
 	     );
 
     checkbox(
-	      "Menú de aplicaciones opcionales",
-	      "Selecciona el resto de las aplicaciones a instalar",
+	      "<~opt.app.menu>",
+	      "<~desc.opt.app.menu>",
 	      "@androverde",
 	      "apps.prop",
 
-  		  "Aplicaciones",	             "",	                               					   		 2,  #-- Group 1. key = "item.1.x"
-		  "Es File Explorer",      		 "Explorador de archivos muy conocido",        					 0,      #-- item.1.1
-		  "Root Explorer", 		         "El navegador de archivos con permisos root por excelencia",  	 1,	     #-- item.1.2
-		  "MTGPS",         	             "Programa para descargar el archivo EPO y mejorar el gps",      1,      #-- item.1.3
+  		  "<~apps>",	             "",	                               					   		 2,  #-- Group 1. key = "item.1.x"
+		  "Es File Explorer",      		 "<~esfile.desc>",        					 0,      #-- item.1.1
+		  "Root Explorer", 		         "<~root.desc>",  	 1,	     #-- item.1.2
+		  "MTGPS",         	             "<~mtgps.desc>",      1,      #-- item.1.3
 		  "Xposed",      	             "Xposed installer & gravity Box",     		         	 		 1,       #-- item.1.4
-		  "Camara & Galeria Lenovo",     "SuperCamara y Galería de Lenovo",   		         	 		 0,       #-- item.1.5
-		  "Tapatalk",      	             "El mejor visor de foros",          	    		 			 1,       #-- item.1.6
+		  "Camara & Galeria Lenovo",     "<~lenovo.desc>",   		         	 		 0,       #-- item.1.5
+		  "Tapatalk",      	             "<~tapatalk.desc>",          	    		 			 1,       #-- item.1.6
 		  "Whatsapp",      	             "...",             									 		 1,       #-- item.1.7
-		  "Fondos Animados",			 "Fondos animados y demás porquería NO RECOMENDADO",			 0,		 #-- item.1.8
-		  "Reproductor de musica por defecto",			 "Para los que usan los controles del s-view",			 0,		 #-- item.1.9
-		  "Gestor de archivos por defecto",	"Gestor de archivos por defecto",							 0		 #-- item.1.10
+		  "<~stuff.name>",				 "<~stuff.desc>",			 0,		 #-- item.1.8
+		  "<~music.def>",				 "<~music.def.desc>",			 0,		 #-- item.1.9
+		  "<~file.def>",				 "<~file.def>",							 0		 #-- item.1.10
         );		
 		
 
-ini_set("text_next", "Finalizar");
+ini_set("text_next", "<~text_finish>");
 endif;
 
 #ETP GOOGLE
@@ -249,16 +249,16 @@ then
 ini_set("rom_name",             "ETP v1.5 Google Edition");
 
 selectbox(
-	      "Has elegido ETP como dice Google",
-	      "Elige la cantidad de chascas de google",
+	      "<~choose.google>",
+	      "<~choose.app.google>",
 	      "@google",
 	      "google.prop",
 
-		  "Maxi o mini, tú eliges",	                 "",	                               		    2,  #-- Group 1. key = "selected.1"
-		  "Versión Full", 				    "Casi todas las aplicaciones de Google y el Xposed",            	    0,	    #-- selected.1 = 1
-		  "Version Micro", 				    "Una cantidad mínima de aplicaciones de google",            	    1	    #-- selected.1 = 2
+		  "<~max.mini>",	                 "",	                               		    2,  #-- Group 1. key = "selected.1"
+		  "Full", 				    "<~google.full.desc>",            	    0,	    #-- selected.1 = 1
+		  "Micro", 				    "<~google.micro.desc>",            	    1	    #-- selected.1 = 2
 		 );
-ini_set("text_next", "Finalizar");
+ini_set("text_next", "<~text_finish");
 	if file_getprop("/tmp/aroma/google.prop","selected.1") == "1"
 	then
 
@@ -267,7 +267,7 @@ agreebox(
     "ETP Google Edition Full",
   
   #-- Subtitle / Description
-    "Listado de aplicaciones",
+    "<~google.app.list>",
   
   #-- Icon:
     "@license",
@@ -276,10 +276,10 @@ agreebox(
     resread("full.txt"),
   
   #-- Checkbox Text
-    "Estas de acuerdo??",
+    "<~google.quest>",
   
   #-- Unchecked Alert Message
-    "Necesitas estar de acuerdo!!"
+    "<~license>"
 );
 	endif;
 	
@@ -290,7 +290,7 @@ agreebox(
     "ETP Google Edition Micro",
   
   #-- Subtitle / Description
-    "Listado de aplicaciones",
+    "<~google.app.list>",
   
   #-- Icon:
     "@license",
@@ -299,10 +299,10 @@ agreebox(
     resread("micro.txt"),
   
   #-- Checkbox Text
-    "Estas de acuerdo??",
+    "<~google.quest>",
   
   #-- Unchecked Alert Message
-    "Necesitas estar de acuerdo!!"
+    "<~license>"
 		);
 	endif;
 endif;
@@ -312,23 +312,23 @@ if file_getprop("/tmp/aroma/sabor.prop","selected.1") == "3"
 	then
 	ini_set("rom_name",             "ETP v1.5 Slim Edition");
 	checkbox(
-	      "Menú de aplicaciones opcionales",
-	      "Selecciona el resto de las aplicaciones a instalar",
+	      "<~opt.app.menu>",
+	      "<~desc.opt.app.menu>",
 	      "@androverde",
 	      "basicas.prop",
 
-  		  "Aplicaciones",	             "",	                               					   		 2,  #-- Group 1. key = "item.1.x"
-		  "Xposed",      	             "Xposed installer y gravity Box",     		         	 		 0,       #-- item.1.1
+  		  "<~apps>",	             "",	                               					   		 2,  #-- Group 1. key = "item.1.x"
+		  "Xposed",      	             "Xposed installer & gravity Box",     		         	 		 0,       #-- item.1.1
 		  "Whatsapp",      	             "...",             									 		 0,       #-- item.1.2
-		  "Reproductor de musica por defecto",			 "Para los que usan los controles del s-view",	 0,		  #-- item.1.3
-		  "Gestor de archivos por defecto",	"Gestor de archivos por defecto",							 0,		  #-- item.1.4
-		  "Reproductor de videos por defecto",	"Para los videos...",									 0,		  #-- item.1.5
-		  "Navegador por defecto",	"Navegador de internet Stock",										 0,		  #-- item.1.6
-		  "Calculadora",	"Simplemente la calculadora",												 0,		  #-- item.1.7
-		  "Email",	"Email stock y servicios exchange",													 0,		  #-- item.1.8
-		  "Backup Transport",	"Herramienta Stock de backup y restauración",							 0,		  #-- item.1.9
+		  "<~music.def>",			 "<~music.def.desc>",	 0,		  #-- item.1.3
+		  "<~file.def>",			 "<~file.def>",							 0,		  #-- item.1.4
+		  "<~def.video.desc>",	"<~def.video.desc>",									 0,		  #-- item.1.5
+		  "<~default.browser>",	"<~default.browser>",										 0,		  #-- item.1.6
+		  "<~calculator>",	"<~calculator.desc>",												 0,		  #-- item.1.7
+		  "Email",	"<~email.desc>",													 0,		  #-- item.1.8
+		  "Backup Transport",	"<~backup.desc>",							 0,		  #-- item.1.9
 		  "Radio FM",	"Radio FM stock",																 0,		  #-- item.1.10
-		  "ViPER4Android",	"Aumento de la calidad de sonido y control total",							 0		  #-- item.1.11
+		  "ViPER4Android",	"<~vipper.desc>",							 0		  #-- item.1.11
 		  );
 endif;
 
