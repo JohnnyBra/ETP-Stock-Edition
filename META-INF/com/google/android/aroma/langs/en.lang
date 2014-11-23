@@ -32,6 +32,8 @@ text_about=About
 text_calibrating=Calibrating Tools
 text_quit=Quit Installation
 text_quit_msg=Are you sure to quit the installer?
+text_finish=Finalizar
+
 
 #
 #-- CUSTOM STRING RESOURCE
@@ -67,3 +69,124 @@ terms.confirm=Please check the agreement...
 
 changelog.title=Changelog
 changelog.desc=AROMA Installer Changelog
+
+#ETP
+to.phone=para el teléfono
+next.continue=Presiona siguiente para continuar
+begin=Empezar la instalación
+install.etp=Instalar ETP v1.5 Stock Edition
+phone.info=Información del teléfono
+show.info=Muestra la información del teléfono, claro
+to.exit=Para salir
+sure=De verdad? No quieres probarla???
+
+#Particionado
+menu.parti=Particionado
+sure.parti=¿Quieres reparticionar tu particion data?
+parti.confirm=Sí, quiero reparticionar
+choose.size.warn=Ahora seleccionarás el tamaño. Data y SD interna se borrarán
+No.parti=No quiero reparticionar
+rom.insta=Seguir con la instalación de la ROM
+parti=Partición
+choose.size=Elige el tamaño de la particion data
+3gbsize=3GB para aplicaciones y el resto para la memoria interna
+7gbsize=7GB para aplicaciones y el resto para la memoria interna
+10gbsize=10GB para aplicaciones y el resto para la memoria interna
+14gb.size=14GB para aplicaciones y el resto para la memoria interna
+reparti=Reparticionar
+repartitioning=Reparticionando
+wait.parti=Por favor, espera mientras se reparticiona. Puede tardar un buen rato...
+succes.parti=Reparticionado con exito
+reboot=Reiniciar
+
+#Tipo de instalacion
+insta.tipe=Tipo de Instalación
+insta.choose=Custom, Google, o Slim, tú eliges
+choose.tipe=Selecciona el tipo de instalación
+custom.edition.desc=Selecciona las opciones que quieras instalar.
+google.edition.desc=Con casi todas las aplicaciones de Google.
+slim.edition.desc=Lo mínimo de lo mínimo. Rápido y funcional.
+
+#wipes e imei
+wipes.menu=Menú de Wipes
+wipes.desc=Si vienes de otra ROM o quieres hacer instalacion limpia márcala
+choose.wipe=Seleccionando wipes
+warning.wipe=Borrará los datos de la ROM anterior, pero no los datos personales como fotos o vídeos
+imei.restore=Restaurar IMEIS
+imei.desc=Copia y restauracion automatica de IMES
+
+#recovery
+recov.menu=Menú de recovery
+recov.choose=Selecciona el recovery
+philz.desc=El que quizá sea el recovery más completo
+same.rec=Dejar el existente
+same.rec.desc=Dejar el recovery que está actualmente instalado
+
+#menus aplicaciones
+basic.app.menu=Menu de Aplicaciones básicas
+desc.app.menu=Selecciona las aplicaciones
+launcher3.desc=Launcher nativo MTK para KitKat
+nova.desc=Launcher personalizable muy fluido
+z3.desc=Launcher y Widgets del Xperia Z3
+goex.desc=Excelente aunque algo instrusivo
+blink.desc=El launcher del HTC M8
+apex.desc=Launcher gratuito muy parecido a Nova Prime
+
+teclados=Teclados
+g3.desc=Teclado del LG G3
+swift.desc=Famoso teclado predictivo
+browsers=Navegadores de Internet
+def.browser.desc=El navegador por defecto de KitKat
+uc.desc=Ligero y muy fluido
+chrome.desc=El navegador de Google
+video=Reproductor de vídeo
+def.video=Videos
+def.video.desc=Reproductor de videos por defecto
+vlc.desc=Ligero y completo. En estado BETA
+bs.desc=Uno de los más famosos
+mobo.desc=Muy completo
+
+
+#Menus aplicaciones adicionales
+opt.app.menu=Menú de aplicaciones opcionales
+desc.opt.app.menu=Selecciona el resto de las aplicaciones a instalar
+apps=Aplicaciones
+esfile.desc=Explorador de archivos muy conocido
+root.desc=El navegador de archivos con permisos root por excelencia
+mtgps.desc=Programa para descargar el archivo EPO y mejorar el gps
+lenovo.desc=SuperCamara y Galería de Lenovo
+tapatalk.desc=El mejor visor de foros
+stuff.name=Fondos animados
+stuff.desc=Fondos animados y demás porquería NO RECOMENDADO
+music.def=Reproductor de musica por defecto
+music.def.desc=Para los que usan los controles del s-view
+file.def=Gestor de archivos por defecto
+
+#Google edition
+choose.google=Has elegido ETP como dice Google
+choose.app.google=Elige la cantidad de chascas de google
+max.mini=Maxi o mini, tú eliges
+google.full.desc=Casi todas las aplicaciones de Google y el Xposed
+google.micro.desc=Una cantidad mínima de aplicaciones de google
+google.app.list=Listado de aplicaciones
+google.quest=Estas de acuerdo?
+license=Necesitas estar de acuerdo!!
+
+#Slim Edition
+vipper.desc=Aumento de la calidad de sonido y control total
+default.browser=Navegador de internet por defecto
+calculator=Calculator
+calculator.desc=Simplemente la calculadora
+email.desc=Email stock y servicios exchange
+backup.desc=Herramienta Stock de backup y restauración
+
+#Installation
+insta.progress=Progreso de la instalación
+is.installing=se está instalando
+insta.of=La instalación de
+go.ahead=va palante. Esperemos que funcione
+all.good=Parece que al final salio bien  la instalación de
+press.finish=Dale a finalizar, anda.
+its.ok=Ya está!
+ok.elephone=se ha instalado correctamente en tu Elephone
+reboot.phone=Reinicia el telefono.

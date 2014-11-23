@@ -1,5 +1,12 @@
 ##ETP CUSTOM INSTALLATION
 
+ini_set("rom_name",             "ETP v1.5 Stock Edition");
+ini_set("rom_version",          "4.4.2");
+ini_set("rom_author",           "JohnnyBra");
+ini_set("rom_device",           "Elephone P8");
+ini_set("rom_date",             "2014");
+
+splash(4000, "splash");
 fontresload("0", "ttf/Roboto-Regular.ttf", "12");
 fontresload("1", "ttf/Roboto-Regular.ttf", "18");
 theme("franzyroy");
@@ -42,13 +49,7 @@ if prop("lang.prop","selected.0")=="2" then
   loadlang("langs/es.lang");
 endif;
 
-ini_set("rom_name",             "ETP v1.5 Stock Edition");
-ini_set("rom_version",          "4.4.2");
-ini_set("rom_author",           "JohnnyBra");
-ini_set("rom_device",           "Elephone P8");
-ini_set("rom_date",             "2014");
 
-splash(4000, "splash");
 
 restotmp("exec_demo/run.sh","run.sh");
 restotmp("exec_demo/displaycapture","displaycapture");
