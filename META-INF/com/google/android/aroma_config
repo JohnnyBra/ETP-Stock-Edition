@@ -33,7 +33,7 @@ selectbox(
   #------------------+-----------------------------------------------------------+---------------#
 
     "English",            "Welcome to Installer",                                        1,      #-- selected.0 = 1
-    "Espanol",            "Bienvenido al Instalador",                                    0      #-- selected.0 = 2
+    "Español",            "Bienvenido al Instalador",                                    0      #-- selected.0 = 2
     
   #--------[ Initial Value = 0: Unselected, 1: Selected, 2: Group Item, 3: Not Visible ]---------#
 );
@@ -65,7 +65,7 @@ restotmp("exec_demo/sleep","sleep");
 viewbox(
     "ETP V1.5 Stock Edition",
     "<~to.phone>"+
-    "Elephone P8.\n\n\n"+
+    " Elephone P8.\n\n\n"+
     "  VERSION : <#080>1.5</#>\n"+
     "  DATE : <#080>19.11.2014</#>\n\n\n"+
 	"<~next.continue>",
